@@ -29,3 +29,8 @@ set through `vfo.setf(frequency)` e.g. `vfo.setf(40000000UL)` for 40MHz
 ### Power
 set through `vfo.pwrlevel = ` e.g. `vfo.pwrlevel = 3 ;` for max. power (maybe max. is 4??).
 There are 4 levels and 0 in the minimum.
+
+## GUI
+* Installs to MATLAB 2018 as an app
+* Use the `Oscillator_GUI_V0.1.mlappinstall` file
+* Only tested on mac and might require instrument control toolbox

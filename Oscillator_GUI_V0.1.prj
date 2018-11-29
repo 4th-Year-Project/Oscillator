@@ -1,0 +1,60 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="3823299404" file="/Users/lcarslake/Documents/Uni Year 4/Project/Oscillator/Oscillator_GUI_V0.1.prj" location="/Users/lcarslake/Documents/Uni Year 4/Project/Oscillator" name="Oscillator_GUI_V0.1" target="target.mlapps" target-name="Package App">
+    <param.appname>Oscillator_GUI_V0.1</param.appname>
+    <param.authnamewatermark>Lawrence Carslake</param.authnamewatermark>
+    <param.email>LCarslake1@sheffield.ac.uk</param.email>
+    <param.company />
+    <param.icon />
+    <param.icons />
+    <param.summary>Oscillator_GUI</param.summary>
+    <param.description>Oscillator_GUI</param.description>
+    <param.screenshot>/private/var/folders/1h/2bpjjs8x1tz1ns0b_294xv8h0000gn/T/tp4bde91d9_b274_4019_87c7_f9ed20d8e3b1.png</param.screenshot>
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>/Users/lcarslake/Documents/Uni Year 4/Project/Oscillator</param.output>
+    <param.guid>a6bee34c-c578-41db-bc33-8f82c060aafc</param.guid>
+    <unset>
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}/Oscillator_GUI.mlapp</file>
+    </fileset.main>
+    <fileset.depfun />
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="/Users/lcarslake/Documents/Uni Year 4/Project" name="Oscillator" optional="false">/Users/lcarslake/Documents/Uni Year 4/Project/Oscillator</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>/Volumes/External_SSD/Matlab/MATLAB_R2018b.app</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>true</unix>
+      <mac>true</mac>
+      <windows>false</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.14.1</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>maci64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
