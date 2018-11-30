@@ -43,9 +43,6 @@ void setup()
   */
   vfo.init() ;
 
-  /*!
-     disable frequency output
-  */
 
 }
 
@@ -64,15 +61,25 @@ void loop()
     delay(10);
     input[3] = Serial.read();
 
-    frequency = (unsigned long) (input[3] * 16777216 + input[2] * 65536 + input[1] * 256 + input[0] ); //out the bytes into a long
+    frequency = (unsigned long) (input[3] * 16777216UL + input[2] * 65536UL + input[1] * 256UL + input[0] ); //out the bytes into a long
 
     vfo.enable();
 
-    if ( vfo.setf(frequency) == 0 ) {
-      Serial.print("success freq:") ;
+    if ( vfo.setf((unsigned long)frequency) == 0 ) {
+      Serial.print("Success frequency:") ;
       Serial.println(vfo.cfreq) ;
     } else {
       Serial.println("error") ;
+      Serial.print("Attempted Frequency:");
+      Serial.println(frequency);
+      Serial.print("Raw read: ");
+      Serial.print(input[0]);
+      Serial.print(" ");
+      Serial.print(input[1]); 
+      Serial.print(" ");
+      Serial.print(input[2]);
+      Serial.print(" ");
+      Serial.println(input[3]);
     }
   }
 }
