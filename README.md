@@ -12,7 +12,7 @@ Currently the code sets the board to 40Mhz and then waits.
 * I don't think there is any feedback from the board to Arduino?
 
 ## Setup
-* Follow setup instructions on [dfannin/adf4351](https://github.com/dfannin/adf4351) to install library. This installs ADF4351 and bignumber libraries.
+* Install the forked [adf4351 arduino library](https://github.com/4th-Year-Project/adf4351) from this orginsation  This installs ADF4351 and bignumber libraries.
 
 ## Connecting
 
