@@ -25,16 +25,17 @@ void setup()
   Serial.begin(9600) ;
   Wire.begin() ;
   /*!
-     setup the chip (for a 10 mhz ref freq)
+     setup the chip
      most of these are defaults
   */
-  vfo.pwrlevel = 3 ; ///< sets to -4 dBm output (0-3) 0 is -4dBm
+  vfo.pwrlevel = 3 ; ///< sets to 5 dBm output (0-3) 0 is -4dBm
   vfo.RD2refdouble = 0 ; ///< ref doubler off
   vfo.RD1Rdiv2 = 0 ;   ///< ref divider off
   vfo.ClkDiv = 150 ;
   vfo.BandSelClock = 80 ;
   vfo.RCounter = 1 ;  ///< R counter to 1 (no division)
   vfo.ChanStep = steps[2] ;  ///< set to 10 kHz steps
+  vfo.chrgPmpCurrent = 7 ; /// Set the current to 2.5mA
 
   vfo.setrf(25000000UL);
 
