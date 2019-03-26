@@ -18,7 +18,8 @@ ADF4351  vfo(PIN_SS, SPI_MODE0, 1000000UL , MSBFIRST) ;
 */
 
 unsigned long frequency = 0;
-byte input[4];
+byte desired_power = 3;
+byte input[5];
 
 void setup()
 {
@@ -53,7 +54,6 @@ void loop()
 {
 
   if (Serial.available()) {      // If anything comes in Serial (USB),
-    
     input[0] = Serial.read(); //read in a long made of bytes
     delay(10);
     input[1] = Serial.read();
@@ -61,7 +61,21 @@ void loop()
     input[2] = Serial.read();
     delay(10);
     input[3] = Serial.read();
+    delay(10);
+    input[4] = Serial.read(); //Should be power setting byte 0-3
 
+    //Set power on ADF
+    desired_power = input[4];
+    if (0 >= desired_power <= 3) { //Checks bounds
+      
+      vfo.pwrlevel = desired_power ; ///< sets to 5 dBm output (0-3) 0 is -4dBm
+      vfo.init() ;
+      delay(100);
+      Serial.print("Set Power:");
+      Serial.println(desired_power);
+    }
+
+    //Set frequency on ADF
     frequency = (unsigned long) (input[3] * 16777216UL + input[2] * 65536UL + input[1] * 256UL + input[0] ); //out the bytes into a long
 
     vfo.enable();
@@ -76,11 +90,11 @@ void loop()
       Serial.print("Raw read: ");
       Serial.print(input[0]);
       Serial.print(" ");
-      Serial.print(input[1]); 
+      Serial.print(input[1]);
       Serial.print(" ");
       Serial.print(input[2]);
       Serial.print(" ");
       Serial.println(input[3]);
     }
+
   }
-}
