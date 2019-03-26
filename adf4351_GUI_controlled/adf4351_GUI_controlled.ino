@@ -63,6 +63,7 @@ void loop()
     input[3] = Serial.read();
     delay(10);
     input[4] = Serial.read(); //Should be power setting byte 0-3
+    }
 
     //Set power on ADF
     desired_power = input[4];
