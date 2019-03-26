@@ -19,7 +19,7 @@ ADF4351  vfo(PIN_SS, SPI_MODE0, 1000000UL , MSBFIRST) ;
 
 unsigned long frequency = 0;
 byte desired_power = 3;
-byte input[5];
+byte input[7];
 
 void setup()
 {
@@ -29,7 +29,7 @@ void setup()
      setup the chip
      most of these are defaults
   */
-  vfo.pwrlevel = 3 ; ///< sets to 5 dBm output (0-3) 0 is -4dBm
+  vfo.pwrlevel = 0 ; ///< sets to 5 dBm output (0-3) 0 is -4dBm
   vfo.RD2refdouble = 0 ; ///< ref doubler off
   vfo.RD1Rdiv2 = 0 ;   ///< ref divider off
   vfo.ClkDiv = 150 ;
@@ -44,7 +44,7 @@ void setup()
      initialize the chip
   */
   vfo.init() ;
-
+ 
 
 }
 
@@ -53,7 +53,7 @@ void setup()
 void loop()
 {
 
-  if (Serial.available()) {      // If anything comes in Serial (USB),
+  if (Serial.available()) {   // If anything comes in Serial (USB),
     input[0] = Serial.read(); //read in a long made of bytes
     delay(10);
     input[1] = Serial.read();
@@ -63,18 +63,24 @@ void loop()
     input[3] = Serial.read();
     delay(10);
     input[4] = Serial.read(); //Should be power setting byte 0-3
-    }
+    delay(10);
+    input[5] = Serial.read(); //Should be power setting byte 0-3
+    delay(10);
+    input[6] = Serial.read(); //Should be power setting byte 0-3
+    
 
     //Set power on ADF
     desired_power = input[4];
+    Serial.print("Desired power:");
+    Serial.println(desired_power);
     if (0 >= desired_power <= 3) { //Checks bounds
-      
       vfo.pwrlevel = desired_power ; ///< sets to 5 dBm output (0-3) 0 is -4dBm
-      vfo.init() ;
-      delay(100);
-      Serial.print("Set Power:");
-      Serial.println(desired_power);
+      Serial.println("Power Set");
     }
+    else{
+       Serial.println("ERROR:Power Out of bounds");
+    }
+    vfo.init() ;
 
     //Set frequency on ADF
     frequency = (unsigned long) (input[3] * 16777216UL + input[2] * 65536UL + input[1] * 256UL + input[0] ); //out the bytes into a long
@@ -97,5 +103,5 @@ void loop()
       Serial.print(" ");
       Serial.println(input[3]);
     }
-
+  }
   }

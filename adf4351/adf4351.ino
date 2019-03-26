@@ -27,18 +27,20 @@ void setup()
      setup the chip (for a 10 mhz ref freq)
      most of these are defaults
   */
-  vfo.pwrlevel = 3 ; ///< sets to -4 dBm output (0-3) 0 is -4dBm
+  vfo.pwrlevel = 0
+  ; ///< sets to -4 dBm output (0-3) 0 is -4dBm
   vfo.RD2refdouble = 0 ; ///< ref doubler off
   vfo.RD1Rdiv2 = 0 ;   ///< ref divider off
   vfo.ClkDiv = 150 ;
   vfo.BandSelClock = 80 ;
   vfo.RCounter = 1 ;  ///< R counter to 1 (no division)
   vfo.ChanStep = steps[2] ;  ///< set to 10 kHz steps
+  vfo.chrgPmpCurrent = 7;
 
   /*!
      sets the reference frequency to 10 Mhz
   */
-  if ( vfo.setrf(25000000UL) ==  0 )
+  if ( vfo.setrf(1736000000UL) ==  0 )
     Serial.println("ref freq set to 25 Mhz") ;
     else
       Serial.println("ref freq set error") ;
@@ -55,7 +57,7 @@ void setup()
     delay(1000);
   Serial.println("setf() to 40 MHz") ;
 
-  if ( vfo.setf(40000000UL) == 0 ) {
+  if ( vfo.setf(1736000000UL) == 0 ) {
     Serial.print("setf() success freq:") ;
     Serial.println(vfo.cfreq) ;
   } else {
