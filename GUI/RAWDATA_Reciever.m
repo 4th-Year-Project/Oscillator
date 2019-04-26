@@ -7,7 +7,7 @@ recieved = ' ';
 
 S = serial('COM4','baud',115200) %device
 fopen(S);
-
+instrr
 fprintf('waiting for "RAWDATA" keyword')
 count =0;
 f = waitbar(0,'Please press sample button');
@@ -56,6 +56,10 @@ for i=1:4
 end
 ylim(hAx,[0 255])
 yticks(hAx,[ 0 64 128 192 255])
+
+hold off
+figure
+plot(1:8000,log10(abs(fft(ch(1,:)))))
 
 
 
